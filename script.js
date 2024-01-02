@@ -7,57 +7,70 @@
 
 
 console.log("********** TASK - 1 **********")
-const number = "525";
+const value = "525";
 
-let palindromeNumber = number.split('').reverse().join('');
-let checkNumberIsPaliindrom = () => {
-    if(number === palindromeNumber){
+// let palindromeValue = value.split('').reverse().join('');
+let checkPaliindrom = (val) => {
+    let palindromeValue = "";
+
+    for (let i = val.length - 1; i >= 0; i--) {
+        palindromeValue += val[i];
+    }
+
+    if (val === palindromeValue) {
         return "this pattern is a palindrome"
     }
-    else
-    {
+    else {
         return "this pattern is not a palindrome"
     }
 }
 
-console.log(checkNumberIsPaliindrom());
+console.log(checkPaliindrom(value));
 
 
 
 
+console.log("********** TASK - 2 **********");
 
-console.log("********** TASK - 2 **********")
-
-let word1 = prompt("Enter word 1 to check anagram words");
+let word1 = prompt("Enter word 1 to check for anagrams");
 let word2 = prompt("Enter word 2 to check");
 
-let reverseWord = word2.split("").reverse().join('');
-let checkWord = () => {
-    if(reverseWord === word1){
-        return alert(`The words " ${word1} " and " ${word2} " you entered are anagrams`)
+const isAnagram = (word1, word2) => {
+    if (word1.length !== word2.length) {
+        return false;
     }
-    else{
-        return alert(`The words " ${word1} " and " ${word2} " you entered are NOT anagrams`)
-    }
+
+    const sortedWord1 = word1.split('').sort().join('');
+    const sortedWord2 = word2.split('').sort().join('');
+
+    return sortedWord1 === sortedWord2;
+};
+
+if (isAnagram(word1, word2)) {
+    console.log(`The words "${word1}" and "${word2}" you entered are anagrams.`);
+    alert(`The words "${word1}" and "${word2}" you entered are anagrams.`);
+} else {
+    console.log(`The words "${word1}" and "${word2}" you entered are NOT anagrams.`);
+    alert(`The words "${word1}" and "${word2}" you entered are NOT anagrams.`);
 }
 
-console.log(checkWord());  
 
 
 
 console.log("********** TASK - 3 **********")
 
 for (let i = 0; i <= 100; i++) {
-    if(i%3===0){
-        console.log("Fizz")
-    }
-    else if (i%15===0){
+    if (i % 15 === 0) {
         console.log("Buzz")
     }
-    else if(i%5===0){
+    else if (i % 5 === 0) {
         console.log("FizzBuzz")
-    }else{
+    }
+    else if (i % 3 === 0) {
+        console.log("Fizz")
+    }
+    else {
         console.log(i)
     }
-    
+
 }
